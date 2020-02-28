@@ -33,8 +33,8 @@ const domCreator = (data) => {
     z.appendChild(p2);                            
 
     h.innerHTML= data.title 
-//    p1.innerHTML= data.description 
-//    p2.innerHTML= data.price 
+    p1.innerHTML= data.description 
+    p2.innerHTML= `Price: $${data.price}` 
 
     parent.appendChild(z);    
 }
@@ -44,8 +44,6 @@ let counter = 0
 
 
 const loadMore = () => {
-    
-    // parent.innerHTML = '';
     let counter2 = 0
     let arr = []
     allData.forEach(data => {
@@ -64,14 +62,15 @@ const loadMore = () => {
         z.appendChild(p2);                            
 
         h.innerHTML= data.title 
-    //    p1.innerHTML= data.description 
-    //    p2.innerHTML= data.price 
+        p1.innerHTML= data.description 
+        p2.innerHTML= `Price: $${data.price}`  
 
          parent.appendChild(z);               
           if (counter2 >= 11){
              z.classList.add('visually-hidden'); 
      }
      } })
+     createBtn()
 }
 
 //////////////////////////////////// 
@@ -95,13 +94,12 @@ const createBtn = () => {
 
 const initialCourses = () => {
       parent.innerHTML = '';
-      createBtn()
       allData.forEach(data => {
           counter += 1;
           if (counter <= 10){
-            domCreator(data)                     
+            domCreator(data)                   
       }
-   })   
+   })         
 }
 
 
@@ -109,7 +107,6 @@ const initialCourses = () => {
 
 const allCourses = () => {
     parent.innerHTML = '';
-    createBtn();
     let counter2 = 0
     allData.forEach(data => {
         counter2 += 1;
@@ -148,7 +145,7 @@ const technology = () => {
 // Load More Functionality
 
 let parent = document.querySelector('ul'),
-    //loadMoreBtn =  document.querySelector('#load-more-comments'),
+//    loadMoreBtn =  document.querySelector('#load-more-comments'),
     loadTaxBtn = document.querySelector('#taxId'),
     loadAllBtn = document.querySelector('#allCourses'),
     loadComBtn = document.querySelector('#communicationId'),
@@ -157,9 +154,8 @@ let parent = document.querySelector('ul'),
     maxItems = 10,
     hiddenClass = "visually-hidden";
 
-/*  
-//  <button id="load-more-comments">Load More</button>
-
+ 
+/*
 loadMoreBtn.addEventListener('click', function(){
    [].forEach.call(document.querySelectorAll('.' + hiddenClass), function(item, idx){
        if (idx < maxItems) {
@@ -168,6 +164,7 @@ loadMoreBtn.addEventListener('click', function(){
    });
 });
 */
+
 loadTaxBtn.addEventListener('click', function(){
     tax()
 });
